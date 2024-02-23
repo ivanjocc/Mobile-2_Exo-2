@@ -22,7 +22,6 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
     private lateinit var gX: TextView
     private lateinit var gY: TextView
     private lateinit var gZ: TextView
-    private lateinit var txtMove: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
