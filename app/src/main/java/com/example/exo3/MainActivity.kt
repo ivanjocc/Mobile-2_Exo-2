@@ -7,6 +7,7 @@ import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
@@ -15,6 +16,8 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
     private lateinit var manager: SensorManager
     private lateinit var sensor: Sensor
     private lateinit var ls: List<Sensor>
+    private lateinit var ball: View
+
 
     private lateinit var gX: TextView
     private lateinit var gY: TextView
@@ -28,7 +31,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         gX = findViewById(R.id.Xacceleration)
         gY = findViewById(R.id.Yacceleration)
         gZ = findViewById(R.id.Zacceleration)
-        txtMove = findViewById(R.id.txtMove)
+        ball = findViewById(R.id.ball)
 
         manager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
         ls = manager.getSensorList(Sensor.TYPE_ALL)
@@ -37,7 +40,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
             Log.i("id", element.toString())
         }
 
-        sensor = manager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER) ?: throw IllegalStateException("No disponible")
+        sensor = manager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER) ?: throw IllegalStateException("no disponible")
         manager.registerListener(this, sensor, SensorManager.SENSOR_DELAY_NORMAL)
     }
 
@@ -52,9 +55,10 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
                     Math.pow(event.values[2].toDouble(), 2.0)
         ).toFloat()
 
-        txtMove.x = txtMove.x + event.values[0] * (-1 * vectorLength)
-        txtMove.y = txtMove.y + event.values[1] * vectorLength
+        ball.x = ball.x + event.values[0] * (-1 * vectorLength)
+        ball.y = ball.y + event.values[1] * vectorLength
     }
+
 
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
     }

@@ -7,10 +7,10 @@
     tools:context=".MainActivity">
 
     <TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="X:"
-    android:id="@+id/Xacceleration"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="X:"
+        android:id="@+id/Xacceleration"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -26,14 +26,12 @@
         android:id="@+id/Zacceleration"
         android:layout_below="@id/Yacceleration"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Bouge moi!!!"
-        android:id="@+id/txtMove"
+    <View
+        android:id="@+id/ball"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:layout_marginTop="161dp"
         android:layout_below="@+id/Zacceleration"
         android:layout_centerHorizontal="true"
-        android:textColor="#ffff4339" />
-
+        android:background="@drawable/circle_shape"/>
 </android.widget.RelativeLayout>
